@@ -1,0 +1,4 @@
+# Common
+node_modules
+.next
+dist

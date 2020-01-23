@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.next
+
+# typescript build output
+dist
+.idea
+.vscode
+
+# dotenv environment variables file
+.env

@@ -1,0 +1,49 @@
+{
+  "name": "vision-next-demo",
+  "version": "1.0.0",
+  "description": "Vision demo for NextJs",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:clinia/vision-next-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clinia/vision-next-demo/issues"
+  },
+  "homepage": "https://github.com/clinia/vision-next-demo#readme",
+  "dependencies": {
+    "@types/node": "^13.1.8",
+    "@types/react": "^16.9.19",
+    "@zeit/next-sass": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "exenv": "^1.2.2",
+    "express": "^4.17.1",
+    "next": "^9.2.0",
+    "next-i18next": "^4.0.0",
+    "next-seo": "^3.4.0",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-ga": "^2.7.0",
+    "uikit": "^3.2.7"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}
