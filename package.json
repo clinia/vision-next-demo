@@ -6,7 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development nodemon"
+    "dev": "NODE_ENV=development nodemon",
+    "build": "next build && tsc --project tsconfig.server.json",
+    "start": "NODE_ENV=production node dist/server/index.js"
   },
   "repository": {
     "type": "git",
