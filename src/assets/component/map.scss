@@ -1,0 +1,88 @@
+.custom-marker {
+  cursor: pointer;
+  background-image: url('/icons/pin@2x.png');
+  background-repeat: no-repeat;
+  background-size: 22px 24px;
+  min-height: 24px;
+  min-width: 22px;
+  margin-top: 14px;
+
+  &:hover, &-active {
+    cursor: pointer;
+    background-image: url('/icons/active-pin@2x.png');
+    background-repeat: no-repeat;
+    background-size: 22px 24px;
+    min-height: 24px;
+    min-width: 22px;
+  }
+}
+
+.example-tooltip {
+  & a {
+    text-decoration: none;
+  }
+  & h3 {
+    font-size: 18px;
+    margin-top: 5px;
+    width: 100%;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  & .card-badge {
+    min-width: 54px;
+    border-radius: 17px;
+    background-color: #2dcebf;
+    text-align: center;
+    padding: 0px 4px;
+    display: inline-block;
+
+    & span {
+      display: block;
+      color: #ffffff;
+      font-family: 'CircularStd';
+      font-size: 10px;
+      font-weight: 300;
+      padding: 5px;
+    }
+  }
+
+  & .phone-icon {
+    height: 13px;
+    width: 13px;
+    margin-right: 5px;
+  }
+}
+
+/* Google Map Infowindow Style Override */
+.gm-style-iw {
+  width: 300px;
+  min-height: 150px;
+}
+
+.gm-style .gm-style-iw-c,
+.gm-style .gm-style-iw-d {
+  background-color: #00ab9b !important;
+  overflow: hidden !important;
+}
+
+.gm-style .gm-style-iw-c {
+  padding: 12px !important;
+  margin-top: -23px;
+}
+
+.gm-style .gm-style-iw-c > button {
+  filter: invert(1);
+  margin-top: 5px !important;
+  margin-right: 5px !important;
+}
+
+.gm-style .gm-style-iw-c * {
+  color: white !important;
+}
+
+.gm-style .gm-style-iw-t::after {
+  background: none !important;
+  box-shadow: none !important;
+}

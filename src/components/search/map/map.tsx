@@ -6,7 +6,7 @@ import { WithTranslation, withTranslation } from 'react-i18next'
 import { GeoSearch, CustomMarker, Control } from 'react-vision-dom-maps'
 import classNames from 'classnames'
 
-import mapStyles from './mapStyle.json'
+import mapStyles from './config/mapStyle.json'
 import Tooltip from './tooltip'
 
 const {
@@ -15,6 +15,7 @@ const {
 
 interface Props extends WithTranslation {
   selectedRecord?: any
+  defaultRefinement?: any
 }
 
 class Map extends Component<Props> {
@@ -40,7 +41,7 @@ class Map extends Component<Props> {
       <CustomMarker
         key={record.id}
         record={record}
-        anchor={{ x: 0, y: 5 }}
+        anchor={{ x: 0, y: 0 }}
         onClick={({ marker }) => this.onClickMarker(record, marker)}
       >
         <div
@@ -52,14 +53,32 @@ class Map extends Component<Props> {
     )
   }
 
+  handleMapOnChange = e => {
+    console.log(e)
+  }
+
   render() {
+    const { defaultRefinement, t } = this.props
     return (
       <GoogleMapsLoader apiKey={googleMapApi}>
         {google => (
-          <GeoSearch google={google} initialZoom={6} styles={mapStyles}>
+          <GeoSearch
+            google={google}
+            initialZoom={6}
+            styles={mapStyles}
+            defaultRefinement={defaultRefinement}
+            gestureHandling={'greedy'}
+            zoomControl={false}
+            onChange={this.handleMapOnChange}
+          >
             {({ records }) => (
               <Fragment>
-                <Control />
+                <Control
+                  translations={{
+                    control: t('search:map.controls.moveSearch'),
+                    redo: t('search:map.controls.redoSearch'),
+                  }}
+                />
                 {records.map(this.renderGeoHit)}
               </Fragment>
             )}

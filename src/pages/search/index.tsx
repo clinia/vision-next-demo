@@ -71,11 +71,7 @@ class SearchWrapper extends Component<Props> {
     clearTimeout(this.debouncedSetState)
 
     this.debouncedSetState = setTimeout(() => {
-      const href = searchStateToURL(searchState)
-      console.log(href)
-      console.log(searchState)
-
-      Router.push(href)
+      Router.push(searchStateToURL(searchState))
     }, 700) // Debounce for url creation
 
     this.setState({ searchState })

@@ -5,7 +5,7 @@ import { Vision, Configure, InfiniteHits } from 'react-vision-dom'
 import { WithTranslation } from 'next-i18next'
 import { Component } from 'react'
 
-import Map from './map'
+import Map from './map/map'
 
 interface Props extends WithTranslation {
   searchState: any
@@ -39,7 +39,7 @@ class SearchContent extends Component<Props, State> {
   }
 
   render() {
-    const { t } = this.props
+    const { t, searchState } = this.props
     const { selectedRecord } = this.state
 
     return (
@@ -62,7 +62,10 @@ class SearchContent extends Component<Props, State> {
                 <InfiniteHits />
               </div>
               <div className="uk-width-3-5">
-                <Map selectedRecord={selectedRecord} />
+                <Map
+                  selectedRecord={selectedRecord}
+                  defaultRefinement={searchState?.boundingBox ? searchState.boundingBox : {}}
+                />
               </div>
             </div>
           </div>
