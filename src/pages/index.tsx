@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import HomePage from './home/homePage'
+import HomePage from './home'
 
 interface Props {}
 

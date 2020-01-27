@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import qs from 'qs'
 import { findResultsState } from 'react-vision-dom/server'
 import cliniasearch from 'cliniasearch/lite'
 import PropTypes from 'prop-types'
@@ -7,6 +6,8 @@ import { isEqual } from 'lodash'
 import { withRouter } from 'next/router'
 
 import SearchPage from '../../components/search/searchPage'
+import { createQuery, getQueryFromPath } from '../../utils'
+import { Router } from '../../config/i18n'
 
 interface Props {
   searchState: any
@@ -14,29 +15,12 @@ interface Props {
   router: any
 }
 
-// Debounce for url creation
-const updateAfter = 700
+const pathToSearchState = path => getQueryFromPath(path)
 
-const createURL = state => `?${qs.stringify(state)}`
-
-const pathToSearchState = path => {
-  const state = path.includes('?') ? qs.parse(path.substring(path.indexOf('?') + 1)) : {}
-  console.log(`pathToSearchState`, state)
-  return state
-}
-
-const searchStateToURL = searchState => {
-  const url = searchState ? `${window.location.pathname}?${qs.stringify(searchState)}` : ''
-  console.log(`searchStateToURL`, url)
-  return url
-}
+const searchStateToURL = searchState => (searchState ? `/search?${createQuery(searchState)}` : '')
 
 // Search client config
 const searchClient = cliniasearch('demo-pharmacies', 'KcLxBhVFP8ooPgQODlAxWqfNg657fTz9')
-
-const createUrl = state => {
-  return `?${qs.stringify(state)}`
-}
 
 const DEFAULT_PROPS = {
   searchClient,
@@ -74,7 +58,6 @@ class SearchWrapper extends Component<Props> {
 
   static getDerivedStateFromProps(props, state) {
     if (!isEqual(state.lastRouter, props.router)) {
-      console.log(`getDerivedStateFromProps`)
       return {
         searchState: pathToSearchState(props.router.asPath),
         lastRouter: props.router,
@@ -89,11 +72,11 @@ class SearchWrapper extends Component<Props> {
 
     this.debouncedSetState = setTimeout(() => {
       const href = searchStateToURL(searchState)
+      console.log(href)
+      console.log(searchState)
 
-      this.props.router.push(href, href, {
-        shallow: true,
-      })
-    }, updateAfter)
+      Router.push(href)
+    }, 700) // Debounce for url creation
 
     this.setState({ searchState })
   }
@@ -105,7 +88,7 @@ class SearchWrapper extends Component<Props> {
         searchState={this.state.searchState}
         resultsState={this.props.resultsState}
         onSearchStateChange={this.onSearchStateChange}
-        createURL={createURL}
+        createURL={createQuery}
       />
     )
   }

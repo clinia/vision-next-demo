@@ -1,10 +1,10 @@
 import { Component } from 'react'
 import { Vision, Configure } from 'react-vision-dom'
 import cliniasearch from 'cliniasearch/lite'
-import qs from 'qs'
 
 import { Router } from '../../config/i18n'
 import SearchBar from '../shared/searchBar'
+import { createQuery } from '../../utils'
 
 interface Props {}
 
@@ -77,24 +77,7 @@ class HomeSearchBar extends Component<Props, State> {
     }
 
     // All params are set, trigger search
-    Router.push(
-      `/search?${qs.stringify(
-        { location, query: autocomplete },
-        {
-          encode: true,
-          arrayFormat: 'comma',
-          skipNulls: true,
-          // Lowercase query params
-          encoder: (str, _defaultEncoder, _charset, type) => {
-            if (type === 'key') {
-              return str.toLowerCase()
-            } else if (type === 'value') {
-              return str.toLowerCase()
-            }
-          },
-        },
-      )}`,
-    )
+    Router.push(`/search?${createQuery({ location, query: autocomplete })}`)
   }
 
   render() {

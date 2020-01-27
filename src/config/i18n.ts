@@ -5,7 +5,7 @@ const NextI18NextInstance = new NextI18Next({
   otherLanguages: ['fr'],
   fallbackLng: 'en',
   lowerCaseLng: true,
-  debug: false,
+  debug: true,
   browserLanguageDetection: false,
   localeSubpaths: {
     fr: 'fr',
