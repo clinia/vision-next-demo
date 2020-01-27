@@ -2,7 +2,6 @@ import App, { AppContext } from 'next/app'
 
 import { appWithTranslation } from '../config/i18n'
 import ErrorPage from './_error'
-import Layout from '../layout/default'
 
 import '../assets/index.scss'
 
@@ -27,11 +26,7 @@ class _App extends App<Props, State> {
       return <ErrorPage {...pageProps} />
     }
 
-    return (
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    )
+    return <Component {...pageProps} />
   }
 }
 

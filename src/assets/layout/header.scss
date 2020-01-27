@@ -13,3 +13,14 @@
     cursor: pointer;
   }
 }
+
+.search-header {
+  &__logo {
+    height: 30px;
+  }
+
+  &__language-change {
+    font-weight: 600;
+    cursor: pointer;
+  }
+}

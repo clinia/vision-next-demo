@@ -26,6 +26,8 @@
   &-suggestion {
     padding: 5px 12px;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
     &-list {
       position: absolute;
       margin: 0;
@@ -36,6 +38,7 @@
       width: 100%;
       border-radius: 8px;
       margin-top: 5px;
+      z-index: 2;
     }
   }
 
@@ -79,3 +82,22 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
+
+/* Override for search in search page header */
+.search-header {
+  .cvi-AutoComplete {
+    &-input {
+      height: 38px;
+      font-size: 13px;
+    }
+  }
+
+  .autocomplete-label {
+    font-size: 9px;
+  }
+
+  .example-autoComplete {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+}
