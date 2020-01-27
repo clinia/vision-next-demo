@@ -1,0 +1,75 @@
+.cvi-Location {
+
+  &-input {
+    height: 48px;
+    width: 100%;
+    font-family: 'CircularStd';
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.16px;
+    line-height: 20px;
+    border-radius: 0px 8px 8px 0px;
+    background-color: #ffffff;
+    outline-color: #2dcebf;
+    padding-left: 10px;
+    border: none;
+    box-shadow: 0 0 5px 0 rgba(72, 89, 104, 0.23);
+    clip-path: inset(-10px -10px -10px -1px);
+    outline: none;
+    padding-top: 14px;
+    position: relative;
+  }
+
+  &-submit {
+    margin-right: 10px;
+    height: 38px;
+    width: 52px;
+    border-radius: 8px;
+    background-color: #2dcebf;
+    color: white;
+    outline: none;
+    border: none;
+    position: absolute;
+    top: 5px;
+    right: -3px;
+    height: 38px;
+    cursor: pointer;
+
+    & svg {
+      fill: white;
+      height: 17px !important;
+      width: 17px !important;
+    }
+  }
+
+  &-suggestion {
+    padding: 5px 12px;
+    cursor: pointer;
+    &-list {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+  }
+
+  &.with-error {
+    & .cvi-Location-input {
+      border: 1px solid red;
+    }
+  }
+}
+
+.cvi-Location-clear {
+  display: none;
+}
+
+.example-location {
+  position: relative;
+  display: inline-block;
+}

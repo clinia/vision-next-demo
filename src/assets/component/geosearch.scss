@@ -1,0 +1,43 @@
+.cvi-GeoSearch {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &-map {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &-label {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+  }
+
+  &-control {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 20px;
+    top: 0px;
+    display: flex;
+    height: 40px;
+    width: 230px;
+    border-radius: 23px;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px 0 rgba(72, 89, 104, 0.23);
+    justify-content: center;
+  }
+
+  &-redo {
+    border-radius: 50px;
+    padding: 10px;
+    background-color: #2dcebf;
+    color: white;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+  }
+}

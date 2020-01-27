@@ -1,4 +1,3 @@
-import { initReactI18next } from 'react-i18next'
 import NextI18Next from 'next-i18next'
 
 const NextI18NextInstance = new NextI18Next({
@@ -8,7 +7,6 @@ const NextI18NextInstance = new NextI18Next({
   lowerCaseLng: true,
   debug: false,
   browserLanguageDetection: false,
-  use: [initReactI18next],
   localeSubpaths: {
     fr: 'fr',
     en: 'en',
@@ -17,4 +15,4 @@ const NextI18NextInstance = new NextI18Next({
 
 export default NextI18NextInstance
 
-export const { appWithTranslation, withTranslation, i18n } = NextI18NextInstance
+export const { appWithTranslation, withTranslation, i18n, Router } = NextI18NextInstance

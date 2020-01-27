@@ -1,1 +1,10 @@
-{}
+{
+  "autocomplete": {
+    "placeholder": "Search",
+    "label": "What"
+  },
+  "location": {
+    "placeholder": "Postal code or city",
+    "label": "Where"
+  }
+}

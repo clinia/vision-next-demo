@@ -25,6 +25,9 @@ export default class _Document extends Document<Props> {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
 
+          {/* Fonts */}
+          <link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+
           {/* Favicon - Icon and Meta */}
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

@@ -1,0 +1,8 @@
+.search-container {
+  border-top: 1px solid #E5E7EC;
+  padding: 12px 40px 0px 40px;
+  background-color: #F9F9FB;
+  & .uk-flex {
+    height: calc(100vh - 73px);
+  }
+}

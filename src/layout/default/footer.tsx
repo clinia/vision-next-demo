@@ -4,7 +4,7 @@ import { WithTranslation, withTranslation } from 'react-i18next'
 interface Props extends WithTranslation {}
 class Footer extends React.PureComponent<Props> {
   render() {
-    return <>Footer</>
+    return <></>
   }
 }
 

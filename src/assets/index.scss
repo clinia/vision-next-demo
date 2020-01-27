@@ -1,5 +1,17 @@
 // site.scss
 
+// Custom pages
+@import './page/home.scss';
+@import './page/search.scss';
+
+// Custom layout
+@import './layout/header.scss';
+
+// Custom styles for Widgets
+@import './component/autocomplete.scss';
+@import './component/location.scss';
+@import './component/geosearch.scss';
+
 // 1. Your custom variables and variable overwrites.
 @import 'theme/variables.scss';
 

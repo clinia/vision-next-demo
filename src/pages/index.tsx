@@ -1,17 +1,16 @@
-import { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
+import { Component } from 'react'
+import HomePage from './home/homePage'
 
-const HomePage: NextPage = () => {
-  return (
-    <>
-      <NextSeo />
-      <h1>Homepage</h1>
-    </>
-  )
+interface Props {}
+
+class HomeWrapper extends Component<Props> {
+  getInitialProps = async () => {
+    return { namespacesRequired: ['common', 'home'] }
+  }
+
+  render() {
+    return <HomePage />
+  }
 }
 
-HomePage.getInitialProps = async () => {
-  return { namespacesRequired: ['common'] }
-}
-
-export default HomePage
+export default HomeWrapper
