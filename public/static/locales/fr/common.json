@@ -6,5 +6,14 @@
   "location": {
     "placeholder": "Code postal ou ville",
     "label": "Où"
+  },
+  "openingHours": {
+    "noOpeningHours": "Aucune heure d'ouverture spécifiée",
+    "closedToday": "Fermé aujourd'hui",
+    "open24Today": "Ouvert 24 heures aujourd'hui",
+    "openToday": "Ouvert aujourd'hui",
+    "closedNow": "Fermé présentement",
+    "openNow": "Ouvrez présentement",
+    "until": "jusqu'à"
   }
 }

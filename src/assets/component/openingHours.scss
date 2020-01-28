@@ -1,0 +1,18 @@
+.opening-hours {
+  & .dot {
+    height: 12px;
+    width: 12px;
+    background-color: $accent-color-darker;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+
+    &--closed {
+      background-color: $error-color;
+    }
+  }
+
+  .open {
+    color: $accent-color-darker;
+  }
+}

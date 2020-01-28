@@ -1,5 +1,8 @@
 // site.scss
 
+// custom variables and variable overwrites.
+@import './theme/variables.scss';
+
 // Custom pages
 @import './page/home.scss';
 @import './page/search.scss';
@@ -13,15 +16,13 @@
 @import './component/geosearch.scss';
 @import './component/map.scss';
 @import './component/hits.scss';
+@import './component/openingHours.scss';
 
-// 1. Your custom variables and variable overwrites.
-@import 'theme/variables.scss';
-
-// 2. Import default variables and available mixins.
+// Default variables and available mixins.
 @import "~uikit/src/scss/variables.scss";
 @import "~uikit/src/scss/mixins.scss";
 
-// 3. Your custom mixin overwrites.
+// Custom mixin overwrites.
 
-// 4. Import UIkit
+// Import UIkit
 @import "~uikit/src/scss/uikit.scss";

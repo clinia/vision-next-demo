@@ -1,7 +1,7 @@
 .search-container {
-  border-top: 1px solid #E5E7EC;
+  border-top: 1px solid $grey;
   // padding: 12px 40px 0px 40px;
-  background-color: #F9F9FB;
+  background-color: $light-grey;
   & .uk-flex {
     height: calc(100vh - 61px);
   }

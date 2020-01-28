@@ -6,12 +6,14 @@ import { isEqual } from 'lodash'
 import { withRouter } from 'next/router'
 import { Vision, Configure, InfiniteHits } from 'react-vision-dom'
 import { NextSeo } from 'next-seo'
+import getConfig from 'next/config'
 
 import { createQuery, getQueryFromPath } from '../../utils'
 import { Router } from '../../config/i18n'
 import Layout from '../../layout/search'
 import { i18n } from '../../config/i18n'
 import Map from '../../components/search/map/map'
+import SearchCard from '../../components/search/results/searchCard'
 
 interface Props {
   searchState: any
@@ -23,10 +25,13 @@ const pathToSearchState = path => getQueryFromPath(path)
 
 const searchStateToURL = searchState => (searchState ? `/search?${createQuery(searchState)}` : '')
 
-const namespacesRequired = ['common', 'home']
+const namespacesRequired = ['common', 'search']
 
 // Search client config
-const searchClient = cliniasearch('demo-pharmacies', 'KcLxBhVFP8ooPgQODlAxWqfNg657fTz9')
+const {
+  publicRuntimeConfig: { clientName, clientApiKey },
+} = getConfig()
+const searchClient = cliniasearch(clientName, clientApiKey)
 
 const DEFAULT_PROPS = {
   searchClient,
@@ -37,7 +42,7 @@ class SearchWrapper extends Component<Props> {
   debouncedSetState
 
   static propTypes = {
-    router: PropTypes.object.isRequired,
+    router: PropTypes.object,
     resultsState: PropTypes.object,
     searchState: PropTypes.object,
   }
@@ -92,42 +97,38 @@ class SearchWrapper extends Component<Props> {
     // this is a fix for ssr + translations. Using next-i18next withTranslation do not expose required getInitialProps function
     const t = i18n.getFixedT(i18n.language, namespacesRequired)
     const { selectedRecord, searchState } = this.state
-
-    if (t) {
-      return (
-        <>
-          <NextSeo title={t('search:seo.title')} description={t('search:seo.description')} />
-          <Vision
-            searchClient={searchClient}
-            resultsState={this.props.resultsState}
-            onSearchStateChange={this.onSearchStateChange}
-            searchState={this.props.searchState}
-            createURL={createQuery}
-            indexName={DEFAULT_PROPS.indexName}
-            {...this.props}
-          >
-            <Layout>
-              {/* Add search configuration */}
-              <Configure perPage={20} queryType="prefix_last" />
-              <div className="search-container">
-                <div className="uk-flex">
-                  <div className="uk-width-2-5">
-                    <InfiniteHits />
-                  </div>
-                  <div className="uk-width-3-5">
-                    <Map
-                      selectedRecord={selectedRecord}
-                      defaultRefinement={searchState?.boundingBox}
-                    />
-                  </div>
+    return (
+      <>
+        <NextSeo title={t('search:seo.title')} description={t('search:seo.description')} />
+        <Vision
+          searchClient={searchClient}
+          resultsState={this.props.resultsState}
+          onSearchStateChange={this.onSearchStateChange}
+          searchState={this.props.searchState}
+          createURL={createQuery}
+          indexName={DEFAULT_PROPS.indexName}
+          {...this.props}
+        >
+          <Layout>
+            {/* Add search configuration */}
+            <Configure perPage={20} queryType="prefix_last" />
+            <div className="search-container">
+              <div className="uk-flex">
+                <div className="uk-width-2-5">
+                  <InfiniteHits hitComponent={SearchCard} />
+                </div>
+                <div className="uk-width-3-5">
+                  <Map
+                    selectedRecord={selectedRecord}
+                    defaultRefinement={searchState?.boundingBox}
+                  />
                 </div>
               </div>
-            </Layout>
-          </Vision>
-        </>
-      )
-    }
-    return null
+            </div>
+          </Layout>
+        </Vision>
+      </>
+    )
   }
 }
 

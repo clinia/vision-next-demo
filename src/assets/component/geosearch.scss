@@ -26,16 +26,16 @@
     height: 40px;
     width: 290px;
     border-radius: 23px;
-    background-color: #ffffff;
-    box-shadow: 0 0 5px 0 rgba(72, 89, 104, 0.23);
+    background-color: #fff;
+    box-shadow: $input-box-shadow;
     justify-content: center;
   }
 
   &-redo {
     border-radius: 50px;
     padding: 10px;
-    background-color: #2dcebf;
-    color: white;
+    background-color: $accent-color;
+    color: #fff;
     width: 100%;
     border: none;
     cursor: pointer;

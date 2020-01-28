@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { WithTranslation, withTranslation } from 'react-i18next'
-import Link from 'next/link'
+import { Router } from '../../config/i18n'
 
 import SearchBar from '../../components/shared/searchBar'
 
@@ -60,14 +60,12 @@ class Header extends React.PureComponent<Props, State> {
     return (
       <div className="uk-padding-small uk-grid header search-header uk-margin-right uk-margin-left">
         <div className="uk-width-1-5 uk-padding-remove">
-          <Link href={`/${i18n.language}`}>
-            <a>
-              <img
-                src="logo/logo.svg"
-                className="uk-align-left search-header__logo uk-margin-remove"
-              />
-            </a>
-          </Link>
+          <a onClick={() => Router.push('/')}>
+            <img
+              src="logo/logo.svg"
+              className="uk-align-left search-header__logo uk-margin-remove"
+            />
+          </a>
         </div>
         <div className="uk-width-3-5 header-search-bar">
           <SearchBar

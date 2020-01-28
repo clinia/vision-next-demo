@@ -17,3 +17,14 @@ export const phoneFormatter = phone => {
 
   return formattedValue
 }
+
+export const distanceFormatter = distance => {
+  if (!distance) return ''
+
+  try {
+    var pardedDistance = parseFloat(distance)
+    return `${(pardedDistance / 1000).toFixed(1)} km`
+  } catch (e) {
+    return ''
+  }
+}

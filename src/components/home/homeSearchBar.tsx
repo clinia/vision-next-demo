@@ -1,12 +1,11 @@
 import { Component } from 'react'
 import { Vision, Configure } from 'react-vision-dom'
 import cliniasearch from 'cliniasearch/lite'
+import getConfig from 'next/config'
 
 import { Router } from '../../config/i18n'
 import SearchBar from '../shared/searchBar'
 import { createQuery } from '../../utils'
-
-interface Props {}
 
 interface State {
   errors: {
@@ -19,7 +18,11 @@ interface State {
 }
 
 // Search client config
-const searchClient = cliniasearch('demo-pharmacies', 'KcLxBhVFP8ooPgQODlAxWqfNg657fTz9')
+const {
+  publicRuntimeConfig: { clientName, clientApiKey },
+} = getConfig()
+interface Props {}
+const searchClient = cliniasearch(clientName, clientApiKey)
 
 class HomeSearchBar extends Component<Props, State> {
   state = {

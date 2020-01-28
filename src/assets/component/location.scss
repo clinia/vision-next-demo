@@ -3,17 +3,16 @@
   &-input {
     height: 48px;
     width: 100%;
-    font-family: 'CircularStd';
     font-size: 16px;
     font-weight: 300;
     letter-spacing: 0.16px;
     line-height: 20px;
     border-radius: 0px 8px 8px 0px;
-    background-color: #ffffff;
-    outline-color: #2dcebf;
+    background-color: #fff;
+    outline-color: $accent-color;
     padding-left: 10px;
     border: none;
-    box-shadow: 0 0 5px 0 rgba(72, 89, 104, 0.23);
+    box-shadow: $input-box-shadow;
     clip-path: inset(-10px -10px -10px -1px);
     outline: none;
     padding-top: 14px;
@@ -25,8 +24,8 @@
     height: 38px;
     width: 52px;
     border-radius: 8px;
-    background-color: #2dcebf;
-    color: white;
+    background-color: $accent-color;
+    color: #fff;
     outline: none;
     border: none;
     position: absolute;
@@ -35,7 +34,7 @@
     cursor: pointer;
 
     & svg {
-      fill: white;
+      fill: #fff;
       height: 17px !important;
       width: 17px !important;
     }
@@ -52,7 +51,7 @@
       padding: 0;
       list-style-type: none;
       background-color: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: $card-box-shadow;
       width: 100%;
       border-radius: 8px;
       margin-top: 5px;
@@ -62,7 +61,7 @@
 
   &.with-error {
     & .cvi-Location-input {
-      border: 1px solid red;
+      border: 1px solid $error-color;
     }
   }
 }

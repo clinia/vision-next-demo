@@ -15,4 +15,4 @@ const NextI18NextInstance = new NextI18Next({
 
 export default NextI18NextInstance
 
-export const { appWithTranslation, withTranslation, i18n, Router } = NextI18NextInstance
+export const { appWithTranslation, withTranslation, i18n, Router, Link } = NextI18NextInstance

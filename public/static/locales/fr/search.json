@@ -7,6 +7,13 @@
     "controls": {
       "moveSearch": "Rechercher quand je déplace la carte",
       "redoSearch": "Relancer la recherche ici"
+    },
+    "tooltip": {
+      "getDirections": "Obtenir des directions"
     }
+  },
+  "results": {
+    "call": "Appeler",
+    "direction": "Directions"
   }
 }

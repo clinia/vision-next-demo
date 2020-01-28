@@ -1,5 +1,137 @@
 .cvi-InfiniteHits {
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+
+  &-list {
+    padding-left: 0px;
+  }
+
+  &-item {
+    list-style: none;
+    margin: 20px 10px 0px 10px;
+
+  }
 }
 
+.search-card {
+  max-width: 450px;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: $input-box-shadow;
+  margin: 0px auto 0px auto;
+
+  & .record-distance {
+    display: inline;
+    float: right;
+    margin-right: 12px;
+    color: $dark-grey;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  &:hover {
+    box-shadow: $input-hover-box-shadow;
+  }
+
+  &-body {
+    padding: 25px 18px 25px 18px;
+
+    & h3 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    & p {
+      margin: 0;
+      font-size: 14px;
+      color: $dark-grey;
+    }
+  }
+
+  &-hours {
+    font-size: 14px;
+    color: $dark-grey;
+  }
+
+  &-footer {
+    padding: 10px;
+    border-radius: 0 0 8px 8px;
+    background-color: $light-grey;
+    margin-bottom: -1px;
+
+    & .footer-button {
+      display: inline-block;
+      border-radius: 50px;
+      border: 1px solid $grey;
+      padding: 5px 20px;
+      margin-left: 12px;
+      width: fit-content;
+      min-width: 70px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $accent-color;
+        color: #fff;
+        & .phone-icon > svg, & .direction-icon > svg {
+          fill: #fff;
+        }
+      }
+    }
+
+    & a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    & .phone-icon > svg {
+      height: 14px;
+      width: 14px;
+      margin-bottom: 3px;
+      margin-right: 5px;
+      fill: $accent-color;
+    }
+
+    & .direction-icon > svg {
+      height: 14px;
+      width: 14px;
+      margin-bottom: 3px;
+      margin-right: 5px;
+      fill: $accent-color;
+    }
+  }
+
+  &-badge {
+    min-width: 54px;
+    border-radius: 17px;
+    background-color: $accent-color;
+    text-align: center;
+    padding: 0px 4px;
+    display: inline-block;
+
+    & span {
+      display: block;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 300;
+      padding: 6px 5px 5px 5px;
+    }
+  }
+}
+
+/* custom scroll bar */
+.cvi-InfiniteHits {
+  &::-webkit-scrollbar {
+    width: 5px;
+
+    &-track {
+      background: $light-grey;
+    }
+    &-thumb {
+      background: $dark-grey;
+      border-radius: 3px;
+    }
+  }
+}

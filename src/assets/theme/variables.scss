@@ -1,3 +1,23 @@
+
+//-------------------- UI KIT OVERRIDE --------------------//
+
 // Font
 $global-font-family: 'CircularStd';
 $global-xxlarge-font-size: 54px;
+$global-color: #485968;
+$global-link-color: $global-color;
+
+//-------------------- CUSTOM OVERRIDE --------------------//
+
+// Custom colors
+$accent-color: #2dcebf;
+$accent-color-darker: #00AB9B;
+$error-color: #e82436;
+$light-grey: #f9f9fb;
+$grey: #E5E7EC;
+$dark-grey: #8C96A9;
+
+// Box shadow
+$input-box-shadow: 0 0 5px 0 rgba(72, 89, 104, 0.23);
+$input-hover-box-shadow: 0 0 8px 0 rgba(72, 89, 104, 0.23);
+$card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

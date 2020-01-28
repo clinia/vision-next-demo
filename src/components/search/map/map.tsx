@@ -22,6 +22,7 @@ class Map extends Component<Props> {
   InfoWindow
 
   onClickMarker = (record, marker) => {
+    const { t } = this.props
     if (!this.InfoWindow) {
       this.InfoWindow = new google.maps.InfoWindow({ maxWidth: 300 })
     }
@@ -29,7 +30,9 @@ class Map extends Component<Props> {
     if (this.InfoWindow.getMap()) {
       this.InfoWindow.close()
     }
-    const html = ReactDOMServer.renderToString(<Tooltip record={record} />)
+
+    // downside: If language change without a page reload, the html here won't change
+    const html = ReactDOMServer.renderToString(<Tooltip record={record} t={t} />)
     this.InfoWindow.setContent(html)
     this.InfoWindow.open(marker.getMap(), marker)
   }
@@ -53,10 +56,6 @@ class Map extends Component<Props> {
     )
   }
 
-  handleMapOnChange = e => {
-    console.log(e)
-  }
-
   render() {
     const { defaultRefinement, t } = this.props
     return (
@@ -69,7 +68,6 @@ class Map extends Component<Props> {
             defaultRefinement={defaultRefinement}
             gestureHandling={'greedy'}
             zoomControl={false}
-            onChange={this.handleMapOnChange}
           >
             {({ records }) => (
               <Fragment>

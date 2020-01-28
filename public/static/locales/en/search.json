@@ -7,6 +7,13 @@
     "controls": {
       "moveSearch": "Search as I move the map",
       "redoSearch": "Redo search here"
+    },
+    "tooltip": {
+      "getDirections": "Get directions"
     }
+  },
+  "results": {
+    "call": "Call",
+    "direction": "Directions"
   }
 }
