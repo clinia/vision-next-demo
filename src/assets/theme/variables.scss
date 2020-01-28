@@ -7,6 +7,12 @@ $global-xxlarge-font-size: 54px;
 $global-color: #485968;
 $global-link-color: $global-color;
 
+// breakpoints
+$breakpoint-small: 640px;  // Phone landscape
+$breakpoint-medium: 960px;  // Tablet Landscape
+$breakpoint-large: 1200px; // Desktop
+$breakpoint-xlarge: 1600px; // Large Screens
+
 //-------------------- CUSTOM OVERRIDE --------------------//
 
 // Custom colors

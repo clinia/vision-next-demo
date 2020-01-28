@@ -1,7 +1,8 @@
-// site.scss
-
 // custom variables and variable overwrites.
 @import './theme/variables.scss';
+
+// custom mixins
+@import "./mixins/breakpoint.scss";
 
 // Custom pages
 @import './page/home.scss';
@@ -17,6 +18,8 @@
 @import './component/map.scss';
 @import './component/hits.scss';
 @import './component/openingHours.scss';
+
+// UIKIT
 
 // Default variables and available mixins.
 @import "~uikit/src/scss/variables.scss";

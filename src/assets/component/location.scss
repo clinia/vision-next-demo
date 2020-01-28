@@ -1,5 +1,5 @@
 .cvi-Location {
-
+  width: 100%;
   &-input {
     height: 48px;
     width: 100%;
@@ -7,7 +7,7 @@
     font-weight: 300;
     letter-spacing: 0.16px;
     line-height: 20px;
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 8px;
     background-color: #fff;
     outline-color: $accent-color;
     padding-left: 10px;
@@ -17,6 +17,10 @@
     outline: none;
     padding-top: 14px;
     position: relative;
+
+    @include breakpoint(sm) {
+      border-radius: 0px 8px 8px 0px;
+    }
   }
 
   &-submit {
@@ -73,6 +77,12 @@
 .example-location {
   position: relative;
   display: inline-block;
+  margin-top: 10px !important;
+
+  @include breakpoint(sm) {
+    padding: 0px !important;
+    margin-top: 0px !important;
+  }
 }
 
 
@@ -95,7 +105,7 @@
   }
 
   .example-location {
-    margin-top: -5px;
+    margin-top: -5px !important;
     margin-bottom: -5px;
   }
 }

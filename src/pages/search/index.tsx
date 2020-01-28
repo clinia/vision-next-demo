@@ -25,7 +25,7 @@ const pathToSearchState = path => getQueryFromPath(path)
 
 const searchStateToURL = searchState => (searchState ? `/search?${createQuery(searchState)}` : '')
 
-const namespacesRequired = ['common', 'search']
+const namespacesRequired = ['common', 'home', 'search']
 
 // Search client config
 const {

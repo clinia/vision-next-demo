@@ -22,6 +22,11 @@ class HomeSearchBar extends Component<Props> {
     if (onLocationChange) onLocationChange(e)
   }
 
+  renderLocationSuggestions = suggestions => {
+    if (!suggestions) return
+    return suggestions.map(suggestion => {})
+  }
+
   render() {
     const {
       t,
@@ -29,25 +34,32 @@ class HomeSearchBar extends Component<Props> {
       errors: { autocompleteError, locationError },
     } = this.props
     return (
-      <div className="uk-flex">
-        <div className="example-autoComplete uk-width-1-2">
-          <div className="autocomplete-label">{t('common:autocomplete.label')}</div>
-          <AutoComplete
-            translations={{ placeholder: t('common:autocomplete.placeholder') }}
-            onChange={this.handleAutocompleteChange}
-            className={classNames({ 'with-error': autocompleteError })}
-          />
+      <div className="uk-grid">
+        <div className="example-autoComplete uk-width-1-1 uk-width-1-2@s">
+          <div style={{ position: 'relative', width: '100%' }}>
+            <div className="autocomplete-label">{t('common:autocomplete.label')}</div>
+            <AutoComplete
+              translations={{ placeholder: t('common:autocomplete.placeholder') }}
+              onChange={this.handleAutocompleteChange}
+              className={classNames({ 'with-error': autocompleteError })}
+            />
+          </div>
         </div>
-        <div className="example-location uk-width-1-2">
-          <div className="autocomplete-label">{t('common:location.label')}</div>
-          <Location
-            translations={{ placeholder: t('common:location.placeholder') }}
-            types={['postcode', 'place', 'neighborhood']}
-            country={['CA']}
-            locale={language}
-            onChange={this.handleLocationChange}
-            className={classNames({ 'with-error': locationError })}
-          />
+        <div className="example-location uk-width-1-1 uk-width-1-2@s">
+          <div style={{ position: 'relative', width: '100%' }}>
+            <div className="autocomplete-label">{t('common:location.label')}</div>
+            <Location
+              translations={{ placeholder: t('common:location.placeholder') }}
+              types={['postcode', 'place', 'neighborhood']}
+              country={['CA']}
+              locale={language}
+              onChange={this.handleLocationChange}
+              className={classNames({ 'with-error': locationError })}
+
+              // TODO: Add custom rendering
+              // renderSuggestion={this.renderLocationSuggestions}
+            />
+          </div>
         </div>
       </div>
     )
