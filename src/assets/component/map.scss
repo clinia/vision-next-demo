@@ -92,3 +92,50 @@
   background: none !important;
   box-shadow: none !important;
 }
+
+
+/* Custom checkbox */
+.cvi-geosearch {
+  &-input {
+    position: absolute;
+    opacity: 0;
+
+    // Box hover
+    &:hover + .cvi-geosearch-label-text:before {
+      background: $accent-color;
+    }
+
+    // Box checked
+    &:checked + .cvi-geosearch-label-text:before {
+      background: $accent-color;
+    }
+    &:checked + .cvi-geosearch-label-text:after {
+      content: '\2713';
+      position: absolute;
+      left: 4px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+    }
+  }
+
+  &-label-text {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 1px;
+    display: block;
+
+    &:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 15px;
+      height: 15px;
+      margin-top: -2px;
+      background: #fff;
+      border: 1px solid $grey;
+    }
+  }
+}

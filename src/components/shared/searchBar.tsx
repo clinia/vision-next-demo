@@ -3,28 +3,83 @@ import { Component } from 'react'
 import { AutoComplete, Location } from 'react-vision-dom'
 import classNames from 'classnames'
 
+import DirectionIcon from '../../assets/icons/direction.svg'
+
 interface Props extends WithTranslation {
   errors: {
     autocompleteError: boolean
     locationError: boolean
   }
-  onAutocompleteChange?: (event) => void
-  onLocationChange?: (event) => void
+  onAutocompleteChange?: (value) => void
+  onLocationChange?: (value) => void
 }
 
-class HomeSearchBar extends Component<Props> {
+class SearchBar extends Component<Props> {
   handleAutocompleteChange = e => {
     const { onAutocompleteChange } = this.props
-    if (onAutocompleteChange) onAutocompleteChange(e)
-  }
-  handleLocationChange = e => {
-    const { onLocationChange } = this.props
-    if (onLocationChange) onLocationChange(e)
+    if (onAutocompleteChange) {
+      const {
+        target: { value },
+      } = e
+      onAutocompleteChange(value)
+    }
   }
 
-  renderLocationSuggestions = suggestions => {
-    if (!suggestions) return
-    return suggestions.map(suggestion => {})
+  handleLocationChange = e => {
+    const { onLocationChange } = this.props
+    if (onLocationChange) {
+      const {
+        target: { value },
+      } = e
+      onLocationChange(value)
+    }
+  }
+
+  handleLocationSelected = suggestion => {
+    const { onLocationChange } = this.props
+    if (onLocationChange) {
+      onLocationChange(suggestion.suggestion)
+    }
+  }
+
+  getSuggestionValue = suggestion => {
+    if (!suggestion) return
+
+    switch (suggestion.type) {
+      case 'postcode':
+        return suggestion.postalCode
+      case 'place':
+        if (suggestion.regionCode) {
+          return `${suggestion.place}, ${suggestion.regionCode}`
+        }
+        return suggestion.place
+      case 'neighborhood':
+        if (suggestion.regionCode && suggestion.place) {
+          return `${suggestion.neighborhood}, ${suggestion.place}, ${suggestion.regionCode}`
+        }
+        return suggestion.neighborhood
+    }
+  }
+
+  renderLocationSuggestion = suggestion => {
+    if (!suggestion) return
+
+    const { t } = this.props
+
+    if (suggestion.type == 'user') {
+      return (
+        <div className="user-position">
+          <DirectionIcon />
+          {t('search:locationAutocomplete.userPosition')}
+        </div>
+      )
+    }
+
+    const value = this.getSuggestionValue(suggestion)
+
+    if (value) {
+      return <div>{value}</div>
+    }
   }
 
   render() {
@@ -35,7 +90,7 @@ class HomeSearchBar extends Component<Props> {
     } = this.props
     return (
       <div className="uk-grid">
-        <div className="example-autoComplete uk-width-1-1 uk-width-1-2@s">
+        <div className="example-autocomplete uk-width-1-1 uk-width-1-2@s">
           <div style={{ position: 'relative', width: '100%' }}>
             <div className="autocomplete-label">{t('common:autocomplete.label')}</div>
             <AutoComplete
@@ -55,9 +110,10 @@ class HomeSearchBar extends Component<Props> {
               locale={language}
               onChange={this.handleLocationChange}
               className={classNames({ 'with-error': locationError })}
-
-              // TODO: Add custom rendering
-              // renderSuggestion={this.renderLocationSuggestions}
+              renderSuggestion={this.renderLocationSuggestion}
+              onSuggestionSelected={this.handleLocationSelected}
+              enableUserLocation
+              triggerSubmitOnSuggestionSelected
             />
           </div>
         </div>
@@ -66,4 +122,4 @@ class HomeSearchBar extends Component<Props> {
   }
 }
 
-export default withTranslation(['common'])(HomeSearchBar)
+export default withTranslation(['common', 'search'])(SearchBar)

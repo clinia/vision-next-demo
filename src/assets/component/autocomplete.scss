@@ -1,4 +1,4 @@
-.cvi-AutoComplete {
+.cvi-autocomplete {
   width: 100%;
   &-input {
     height: 48px;
@@ -47,15 +47,15 @@
   }
 
   &.with-error {
-    & .cvi-AutoComplete-input {
+    & .cvi-autocomplete-input {
       border: 1px solid $error-color;
     }
   }
 }
 
 // Hide submit buttons, we will use ours
-.cvi-AutoComplete-submit,
-.cvi-AutoComplete-clear {
+.cvi-autocomplete-submit,
+.cvi-autocomplete-clear {
   display: none;
 }
 
@@ -71,7 +71,7 @@
   left: 10px;
 }
 
-.example-autoComplete {
+.example-autocomplete {
   position: relative;
   display: inline-block;
 }
@@ -89,7 +89,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 /* Override for search in search page header */
 .search-header {
-  .cvi-AutoComplete {
+  .cvi-autocomplete {
     &-input {
       height: 38px;
       font-size: 13px;
@@ -100,7 +100,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     font-size: 9px;
   }
 
-  .example-autoComplete {
+  .example-autocomplete {
     margin-top: -5px;
     margin-bottom: -5px;
   }

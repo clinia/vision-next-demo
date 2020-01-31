@@ -23,19 +23,24 @@ class SearchCard extends Component<Props> {
 
   render() {
     const { t, record } = this.props
-    const {
-      type,
-      address: { streetAddress, place, regionCode },
-      phones,
-      openingHours,
-    } = record
+    const { id, name, type, address, phones, openingHours, distance } = record
+
+    let hasAddress = false
+    let regionCode, streetAddress, place
+
+    if (address) {
+      hasAddress = true
+      streetAddress = address.streetAddress
+      place = address.place
+      regionCode = address.regionCode
+    }
 
     const mapLink = getGoogleMapItinearyLink(streetAddress)
 
     return (
       <div
         className="search-card"
-        key={record.id}
+        key={id}
         onMouseEnter={() => this.handleRecordHovered()}
         onMouseLeave={() => this.handleRecordHovered(true)}
       >
@@ -43,12 +48,10 @@ class SearchCard extends Component<Props> {
           <div className="search-card-badge">
             <span>{type}</span>
           </div>
-          {record.distance && (
-            <div className="record-distance">{distanceFormatter(record.distance)}</div>
-          )}
-          <h3>{record.name}</h3>
+          {distance && <div className="record-distance">{distanceFormatter(distance)}</div>}
+          <h3>{name}</h3>
           <div>
-            <p>{`${streetAddress}, ${place} - ${regionCode}`}</p>
+            {hasAddress && <p>{`${streetAddress}, ${place} - ${regionCode}`}</p>}
             <OpeningHours openingHours={openingHours} className="search-card-hours" />
           </div>
         </div>

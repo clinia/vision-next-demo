@@ -63,11 +63,13 @@ class Map extends Component<Props> {
         {google => (
           <GeoSearch
             google={google}
-            initialZoom={6}
-            styles={mapStyles}
+            styles={mapStyles} // map style options
             defaultRefinement={defaultRefinement}
-            gestureHandling={'greedy'}
-            zoomControl={false}
+            gestureHandling={'greedy'} // no need to use ctrl + mouse to move map
+            zoomControl={false} // Remove map zoom
+            enableRefineOnMapMove={false} // initially unchecked search on map move
+            minZoom={4} // minimum map zoom
+            maxZoom={16} // maximum map zoom
           >
             {({ records }) => (
               <Fragment>

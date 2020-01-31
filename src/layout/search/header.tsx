@@ -31,20 +31,14 @@ class Header extends React.PureComponent<Props, State> {
     i18n.changeLanguage(lng)
   }
 
-  handleAutocompleteChange = e => {
-    const {
-      target: { value },
-    } = e
+  handleAutocompleteChange = value => {
     this.setState({
       errors: { ...this.state.errors, autocompleteError: !value },
       values: { autocomplete: value },
     })
   }
 
-  handleLocationChange = e => {
-    const {
-      target: { value },
-    } = e
+  handleLocationChange = value => {
     this.setState({
       errors: { ...this.state.errors, locationError: !value },
     })

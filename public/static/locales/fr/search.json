@@ -15,5 +15,8 @@
   "results": {
     "call": "Appeler",
     "direction": "Directions"
+  },
+  "locationAutocomplete": {
+    "userPosition": "Position actuelle"
   }
 }

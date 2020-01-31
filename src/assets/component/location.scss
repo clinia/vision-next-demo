@@ -52,7 +52,7 @@
     &-list {
       position: absolute;
       margin: 0;
-      padding: 0;
+      padding: 5px 0px 5px 0px;
       list-style-type: none;
       background-color: #fff;
       box-shadow: $card-box-shadow;
@@ -60,6 +60,25 @@
       border-radius: 8px;
       margin-top: 5px;
       z-index: 2;
+
+      & li {
+        padding: 0;
+        & div {
+          padding: 5px;
+          &:hover {
+            background-color: $light-grey;
+          }
+        }
+      }
+    }
+
+    & .user-position {
+      & svg {
+        height: 16px;
+        margin-right: 5px;
+        margin-top: -4px;
+        fill: $accent-color;
+      }
     }
   }
 

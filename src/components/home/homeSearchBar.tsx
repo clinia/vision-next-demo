@@ -39,20 +39,14 @@ class HomeSearchBar extends Component<Props, State> {
   //  Check if autocomple value is set
   //  Keep value in case that user did not select in dropdown (value will not be set in context)
   ////
-  handleAutocompleteChange = e => {
-    const {
-      target: { value },
-    } = e
+  handleAutocompleteChange = value => {
     this.setState({
       errors: { ...this.state.errors, autocompleteError: !value },
       values: { autocomplete: value },
     })
   }
 
-  handleLocationChange = e => {
-    const {
-      target: { value },
-    } = e
+  handleLocationChange = value => {
     this.setState({
       errors: { ...this.state.errors, locationError: !value },
     })
@@ -63,8 +57,7 @@ class HomeSearchBar extends Component<Props, State> {
       errors: { locationError, autocompleteError },
       values: { autocomplete },
     } = this.state
-
-    var { location } = e
+    var { location, aroundLatLng } = e
 
     // Check if fields have error
     if (locationError || autocompleteError) {
@@ -72,15 +65,15 @@ class HomeSearchBar extends Component<Props, State> {
     }
 
     // Check values and set error if fields are missing
-    if (!location || !autocomplete) {
+    if ((!location && !aroundLatLng) || !autocomplete) {
       this.setState({
-        errors: { autocompleteError: !autocomplete, locationError: !location },
+        errors: { autocompleteError: !autocomplete, locationError: !location && !aroundLatLng },
       })
       return
     }
 
     // All params are set, trigger search
-    Router.push(`/search?${createQuery({ location, query: autocomplete })}`)
+    Router.push(`/search?${createQuery({ aroundLatLng, location, query: autocomplete })}`)
   }
 
   render() {
