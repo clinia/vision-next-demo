@@ -115,13 +115,16 @@ class SearchWrapper extends Component<Props> {
             <div className="search-container">
               <div className="uk-flex">
                 <div className="uk-width-2-5">
-                  <InfiniteHits hitComponent={SearchCard} />
+                  <InfiniteHits
+                    hitComponent={props => {
+                      return (
+                        <SearchCard record={props.record} onRecordOver={this.setSelectedRecord} />
+                      )
+                    }}
+                  />
                 </div>
                 <div className="uk-width-3-5">
-                  <Map
-                    selectedRecord={selectedRecord}
-                    defaultRefinement={searchState?.boundingBox}
-                  />
+                  <Map selectedRecord={selectedRecord} />
                 </div>
               </div>
             </div>

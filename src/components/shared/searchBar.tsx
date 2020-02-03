@@ -38,10 +38,14 @@ class SearchBar extends Component<Props> {
   handleLocationSelected = suggestion => {
     const { onLocationChange } = this.props
     if (onLocationChange) {
-      onLocationChange(suggestion.suggestion)
+      const value = this.getSuggestionValue(suggestion)
+      onLocationChange(value)
     }
   }
 
+  ///
+  // Transpose suggestion to desired format (display in autocomplete and input value on selection)
+  ///
   getSuggestionValue = suggestion => {
     if (!suggestion) return
 
@@ -111,6 +115,7 @@ class SearchBar extends Component<Props> {
               onChange={this.handleLocationChange}
               className={classNames({ 'with-error': locationError })}
               renderSuggestion={this.renderLocationSuggestion}
+              suggestionValue={this.getSuggestionValue}
               onSuggestionSelected={this.handleLocationSelected}
               enableUserLocation
               triggerSubmitOnSuggestionSelected
