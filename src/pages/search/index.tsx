@@ -96,18 +96,18 @@ class SearchWrapper extends Component<Props> {
   render() {
     // this is a fix for ssr + translations. Using next-i18next withTranslation do not expose required getInitialProps function
     const t = i18n.getFixedT(i18n.language, namespacesRequired)
-    const { selectedRecord, searchState } = this.state
+    const { selectedRecord } = this.state
     return (
       <>
         <NextSeo title={t('search:seo.title')} description={t('search:seo.description')} />
         <Vision
           searchClient={searchClient}
-          resultsState={this.props.resultsState}
+          // resultsState={this.props.resultsState}
           onSearchStateChange={this.onSearchStateChange}
-          searchState={this.props.searchState}
+          // searchState={searchState}
           createURL={createQuery}
           indexName={DEFAULT_PROPS.indexName}
-          {...this.props}
+          // {...this.props}
         >
           <Layout>
             {/* Add search configuration */}
@@ -116,6 +116,7 @@ class SearchWrapper extends Component<Props> {
               <div className="uk-flex">
                 <div className="uk-width-2-5">
                   <InfiniteHits
+                    // Custom hit component with more props than default hit (record only)
                     hitComponent={props => {
                       return (
                         <SearchCard record={props.record} onRecordOver={this.setSelectedRecord} />
