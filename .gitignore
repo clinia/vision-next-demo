@@ -13,4 +13,4 @@ dist
 .vscode
 
 # dotenv environment variables file
-.env
+.env*
